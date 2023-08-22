@@ -1,0 +1,53 @@
+project-root/
+├── __tests__/            # Unit tests
+├── android/              # Android native files
+├── ios/                  # iOS native files
+├── node_modules/         # Node.js modules
+├── src/                  # Source code
+│   ├── assets/           # Images, fonts, etc.
+│   ├── components/       # Reusable components
+│   ├── screens/          # App screens
+│   ├── navigation/       # Navigation configuration
+│   ├── utils/            # Utility functions
+│   ├── services/         # API services
+│   ├── redux/            # Redux-related files
+│   │   ├── actions/      # Action creators
+│   │   ├── reducers/     # Reducer functions
+│   │   ├── store/        # Redux store configuration
+│   │   └── types/        # Type definitions
+│   └── App.js            # App entry point
+├── .babelrc              # Babel configuration
+├── .eslintrc.js          # ESLint configuration
+├── .prettierrc           # Prettier configuration
+├── package.json          # Node.js dependencies and scripts
+└── README.md             # Project documentation
+
+
+
+src/screens/
+├── Auth/                  # Authentication-related screens
+│   ├── LoginScreen.js
+│   ├── SignUpScreen.js
+│   └── ...                 # Other auth screens
+├── Home/                  # Main app screens
+│   ├── DashboardScreen.js
+│   ├── FeedScreen.js
+│   ├── NotificationsScreen.js
+│   └── ...                 # Other home screens
+├── Profile/               # User profile screens
+│   ├── ProfileDetailScreen.js
+│   ├── EditProfileScreen.js
+│   └── ...                 # Other profile screens
+├── Settings/              # App settings screens
+│   ├── GeneralSettingsScreen.js
+│   ├── PrivacySettingsScreen.js
+│   └── ...                 # Other settings screens
+├── Search/                # Search-related screens
+│   ├── SearchScreen.js
+│   ├── SearchResultScreen.js
+│   └── ...                 # Other search screens
+├── Messages/              # Chat and messaging screens
+│   ├── ChatListScreen.js
+│   ├── ChatScreen.js
+│   └── ...                 # Other messaging screens
+└── index.js               # Screen exports for easy import
