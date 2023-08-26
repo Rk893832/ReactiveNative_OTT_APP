@@ -34,12 +34,11 @@ function EmptyScreen() {
 
 function Home() {
     return (
-        <Tab.Navigator
-        // tabBar={() => <CommonFooter/>}
-        >       
-       <Tab.Screen name="home" component={AppNavigator}/>
-        <Tab.Screen name="chat" component={EmptyScreen}  />
-        <Tab.Screen name="profile" component={EmptyScreen} />
+        <Tab.Navigator tabBar={props => <CommonFooter {...props} options={{ headerShown: false }}/>}
+        screenOptions={{ headerShown: false}} >       
+       <Tab.Screen name="Home" component={AppNavigator}/>
+        <Tab.Screen name="Chat" component={EmptyScreen}  />
+        <Tab.Screen name="Profile" component={EmptyScreen} />
       </Tab.Navigator>
     );
   }

@@ -1,32 +1,44 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
-const CommonFooter = ({ navigation }) => {
-  const navigateToScreen = (screenName) => {
-    navigation.navigate(screenName);
+const CommonFooter = ({ navigation, state }) => {
+  // Define tab icons and labels
+  const tabIcons = {
+    Home: { icon: 'home', label: 'Home' },
+    Chat: { icon: 'message1', label: 'Chat' },
+    Profile: { icon: 'user', label: 'Profile' },
   };
 
   return (
     <View style={styles.footer}>
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => navigateToScreen('Home')}
-      >
-        <AntDesign name="home" size={24} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => navigateToScreen('Chat')}
-      >
-        <Feather name="message-square" size={24} color="white" />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.option}
-        onPress={() => navigateToScreen('Profile')}
-      >
-        <FontAwesome name="user-circle" size={24} color="white" />
-      </TouchableOpacity>
+      {state.routes.map((route, index) => {
+        const tabInfo = tabIcons[route.name]; // Retrieve tab info using route name
+
+        if (tabInfo) {
+          const isFocused = state.index === index;
+          const { icon, label } = tabInfo;
+
+          return (
+            <TouchableOpacity
+              key={index}
+              style={styles.tabButton}
+              onPress={() => navigation.navigate(route.name)}
+            >
+              <View style={styles.iconContainer}>
+              {/* <Feather name={icon} size={24}  color={isFocused ? '#0b81fe' : 'gray'} /> */}
+                <AntDesign
+                  name={icon}
+                  size={24}
+                  color={isFocused ? '#0b81fe' : 'gray'}
+                />
+              </View>
+              <Text style={isFocused ? styles.labelFocused : styles.label}>{label}</Text>
+            </TouchableOpacity>
+          );
+        }
+        return null; // Handle cases where route name is not in tabIcons
+      })}
     </View>
   );
 };
@@ -34,16 +46,31 @@ const CommonFooter = ({ navigation }) => {
 const styles = StyleSheet.create({
   footer: {
     flexDirection: 'row',
-    backgroundColor: '#0b81fe',
+    backgroundColor: 'white',
+    borderTopWidth: 1,
+    borderTopColor: '#e0e0e0',
     justifyContent: 'space-around',
     alignItems: 'center',
-    paddingVertical: 8,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
+    paddingBottom: 8,
+    paddingHorizontal: 16,
   },
-  option: {
+  tabButton: {
     alignItems: 'center',
+  },
+  iconContainer: {
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 20,
+  },
+  label: {
+    fontSize: 12,
+    color: 'gray',
+    marginTop: 4,
+  },
+  labelFocused: {
+    fontSize: 12,
+    color: '#0b81fe',
+    marginTop: 4,
   },
 });
 
