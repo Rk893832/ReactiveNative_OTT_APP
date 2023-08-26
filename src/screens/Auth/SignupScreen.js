@@ -73,7 +73,7 @@ export default function SignupScreen() {
 
       {!isLoading && (
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={styles.buttonText}>Signup</Text>
         </TouchableOpacity>
       )}
 
