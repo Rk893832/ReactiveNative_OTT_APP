@@ -26,8 +26,6 @@ import CommonFooter from '../components/commons/Footer/FooterScreen';
 function EmptyScreen() {
     return (
         <View>
-
-       
       </View>
     )
   }
