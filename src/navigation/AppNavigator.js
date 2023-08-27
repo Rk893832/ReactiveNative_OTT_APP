@@ -65,10 +65,7 @@ const StackNavigator = () => {
       
       <Stack.Screen name="chatList" component={ChatListScreen} options={getStackScreenOptions()}/>
       <Stack.Screen name="chatConversation" component={ChatConversationScreen} options={getStackScreenOptions()}/>
-
-
-
-
+     
       <Stack.Screen name="Login" component={LoginScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="Signup" component={SignupScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="home" component={HomeScreen} options={{ header: () => <HeaderScreen title="Home" /> }} />
