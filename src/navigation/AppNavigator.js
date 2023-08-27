@@ -93,7 +93,7 @@ const getStackScreenOptions = (title) => ({
 
 const App = () => (
   <NavigationContainer>
-    <Home />
+    <AppNavigator />
   </NavigationContainer>
 );
 export default App;

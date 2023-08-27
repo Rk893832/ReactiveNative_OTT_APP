@@ -60,6 +60,8 @@ export default function LoginScreen() {
         </TouchableOpacity>
       )}
 
+      <Text>Create</Text>
+
     </View>
   );
 }
