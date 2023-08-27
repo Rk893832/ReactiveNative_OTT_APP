@@ -61,14 +61,15 @@ function DrawerNavigator() {
 const StackNavigator = () => {
   return (
     // <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="home">       
       
-      <Stack.Screen name="chatList" component={ChatListScreen} options={getStackScreenOptions()}/>
-      <Stack.Screen name="chatConversation" component={ChatConversationScreen} options={getStackScreenOptions()}/>
-     
       <Stack.Screen name="Login" component={LoginScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="Signup" component={SignupScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="home" component={HomeScreen} options={{ header: () => <HeaderScreen title="Home" /> }} />
+      <Stack.Screen name="chatList" component={ChatListScreen} options={getStackScreenOptions()}/>
+      <Stack.Screen name="chatConversation" component={ChatConversationScreen} options={getStackScreenOptions()}/>
+      
+     
       {/* <Stack.Screen name="Header" component={() => <HeaderScreen title='Header' />} options={{ headerShown: false }} />
       <Stack.Screen name="Footer" component={FooterScreen} />
       <Stack.Screen name="Sidebar" component={SidebarScreen} /> */}
