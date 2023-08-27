@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
 import {
   StyleSheet, Text, View, TextInput,
-  TouchableOpacity, ActivityIndicator
+  TouchableOpacity, ActivityIndicator, Button
 } from 'react-native';
 
 
 export default function LoginScreen() {
 
+  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false); // State for loader
   let [userData, setUserData] = useState({
     email: "",
@@ -31,7 +33,7 @@ export default function LoginScreen() {
       <Text style={styles.containerheading}>Login Form !!</Text>
       <StatusBar style="dark-content" />
 
-    
+
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -60,8 +62,14 @@ export default function LoginScreen() {
         </TouchableOpacity>
       )}
 
-      <Text>Create</Text>
-
+      <View style={styles.header}>
+        <Text style={styles.title}>Create a New Account</Text>
+        <Button
+          title="Signup"
+          onPress={() => navigation.navigate('Signup')}
+          color="#007AFF"
+        />
+      </View>
     </View>
   );
 }
@@ -97,12 +105,20 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#009933',
-    paddingVertical: 12,     // Increase vertical padding to make the button taller
-    paddingHorizontal: 24,   // Increase horizontal padding to make the button wider
-    borderRadius: 10,        // Adjust the border radius for curved corners
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 10,
   },
-
+  title: {
+    fontSize: 18,
+    marginBottom: 20,
+  },
   loader: {
     fontSize: 25,
-  }
+  },
+  header: {
+    flexDirection: 'row', // Display items in a row
+    alignItems: 'center', // Align items vertically in the center
+    marginTop:20    
+  },
 });

@@ -8,6 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home/HomeScreen';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import SignupScreen from '../screens/Auth/SignupScreen';
+import ChatListScreen from '../screens/Chat/ChatListScreen';
+import ChatConversationScreen from '../screens/Chat/ChatConversationScreen';
 import SidebarScreen from '../components/commons/Sidebar/SidebarScreen';
 import HeaderScreen from '../components/commons/Header/HeaderScreen';
 import FooterScreen from '../components/commons/Footer/FooterScreen';
@@ -30,43 +32,49 @@ function EmptyScreen() {
   )
 }
 
-function Home() {
+function TabNavigator() {
   return (
     <Tab.Navigator tabBar={props => <CommonFooter {...props} options={{ headerShown: false }} />}
       screenOptions={{ headerShown: false }} >
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Chat" component={EmptyScreen} />
-      <Tab.Screen name="Profile" component={EmptyScreen} />
+      <Tab.Screen name="home1" component={HomeScreen} />
+      {/* <Tab.Screen name="Chat" component={EmptyScreen} />
+      <Tab.Screen name="Profile" component={EmptyScreen} /> */}
     </Tab.Navigator>
   );
 }
 
-// function Root() {
-//   return (
-//     <Drawer.Navigator >
-//       <Drawer.Screen name="home" component={Home} />
-//       {/* <Drawer.Screen name="Profile" component={EmptyScreen} /> */}
-//       {/* <Stack.Screen name="Settings" component={EmptyScreen} /> */}
-//     </Drawer.Navigator>
-//   );
-// }
+function DrawerNavigator() {
+  return (
+
+    // <Drawer.Navigator drawerContent={CustomDrawerContent}>
+
+    <Drawer.Navigator >
+      {/* <Drawer.Screen name="home" component={Home} /> */}
+      {/* <Drawer.Screen name="Profile" component={EmptyScreen} /> */}
+      {/* <Stack.Screen name="Settings" component={EmptyScreen} /> */}
+      </Drawer.Navigator>
+  );
+}
 
 
-const AppNavigator = () => {
+
+const StackNavigator = () => {
   return (
     // <NavigationContainer>
     <Stack.Navigator>
       
+      <Stack.Screen name="chatList" component={ChatListScreen} options={getStackScreenOptions()}/>
+      <Stack.Screen name="chatConversation" component={ChatConversationScreen} options={getStackScreenOptions()}/>
+
+
+
+
       <Stack.Screen name="Login" component={LoginScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="Signup" component={SignupScreen} options={getStackScreenOptions()} />
-
       <Stack.Screen name="home" component={HomeScreen} options={{ header: () => <HeaderScreen title="Home" /> }} />
-
-
       {/* <Stack.Screen name="Header" component={() => <HeaderScreen title='Header' />} options={{ headerShown: false }} />
       <Stack.Screen name="Footer" component={FooterScreen} />
       <Stack.Screen name="Sidebar" component={SidebarScreen} /> */}
-
     </Stack.Navigator>
     // </NavigationContainer>
   );
@@ -93,7 +101,7 @@ const getStackScreenOptions = (title) => ({
 
 const App = () => (
   <NavigationContainer>
-    <AppNavigator />
+    <StackNavigator />
   </NavigationContainer>
 );
 export default App;
