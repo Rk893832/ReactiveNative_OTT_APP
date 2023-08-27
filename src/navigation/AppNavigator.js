@@ -63,9 +63,9 @@ const AppNavigator = () => {
       <Stack.Screen name="home" component={HomeScreen} options={{ header: () => <HeaderScreen title="Home" /> }} />
 
 
-      <Stack.Screen name="Header" component={() => <HeaderScreen title='Header' />} options={{ headerShown: false }} />
+      {/* <Stack.Screen name="Header" component={() => <HeaderScreen title='Header' />} options={{ headerShown: false }} />
       <Stack.Screen name="Footer" component={FooterScreen} />
-      <Stack.Screen name="Sidebar" component={SidebarScreen} />
+      <Stack.Screen name="Sidebar" component={SidebarScreen} /> */}
 
     </Stack.Navigator>
     // </NavigationContainer>
