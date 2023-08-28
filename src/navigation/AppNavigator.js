@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { StyleSheet, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useWindowDimensions } from 'react-native';
 
 
 import HomeScreen from '../screens/Home/HomeScreen';
@@ -16,7 +18,7 @@ import FooterScreen from '../components/commons/Footer/FooterScreen';
 
 
 const Stack = createNativeStackNavigator();
-// const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
 
@@ -34,42 +36,50 @@ function EmptyScreen() {
 
 function TabNavigator() {
   return (
-    <Tab.Navigator tabBar={props => <CommonFooter {...props} options={{ headerShown: false }} />}
-      screenOptions={{ headerShown: false }} >
-      <Tab.Screen name="home1" component={HomeScreen} />
-      {/* <Tab.Screen name="Chat" component={EmptyScreen} />
-      <Tab.Screen name="Profile" component={EmptyScreen} /> */}
+    <Tab.Navigator tabBar={props => <CommonFooter {...props} />} >
+      <Tab.Screen name="Home" component={HomeScreen} 
+      options={({ route, navigation  }) => ({
+        header: () => <HeaderScreen route={route} navigation={navigation} />,
+      })}
+      />
+      <Tab.Screen name="Chat" component={ChatListScreen} />
+      <Tab.Screen name="Profile" component={ChatConversationScreen} />
     </Tab.Navigator>
   );
 }
 
 function DrawerNavigator() {
+
+  const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 768;
+
   return (
-
-    // <Drawer.Navigator drawerContent={CustomDrawerContent}>
-
-    <Drawer.Navigator >
-      {/* <Drawer.Screen name="home" component={Home} /> */}
-      {/* <Drawer.Screen name="Profile" component={EmptyScreen} /> */}
-      {/* <Stack.Screen name="Settings" component={EmptyScreen} /> */}
-      </Drawer.Navigator>
+    <Drawer.Navigator gestureEnabled={true}  
+    // defaultStatus="open"
+    screenOptions={{
+      drawerStyle: {
+        backgroundColor: '#c6cbef',
+        width: 240,
+        drawerType: isLargeScreen ? 'permanent' : 'back',
+        drawerStyle: isLargeScreen ? null : { width: '100%' },
+        overlayColor: 'transparent',
+      },
+    }}>
+      <Drawer.Screen name="Home1" component={TabNavigator}  />
+      <Drawer.Screen name="Profile" component={EmptyScreen} />
+      <Stack.Screen name="Settings" component={EmptyScreen} />
+    </Drawer.Navigator>
   );
 }
-
-
 
 const StackNavigator = () => {
   return (
     // <NavigationContainer>
-    <Stack.Navigator initialRouteName="home">       
-      
+    <Stack.Navigator initialRouteName="Login" >
+      <Stack.Screen name="Home" component={DrawerNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Login" component={LoginScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="Signup" component={SignupScreen} options={getStackScreenOptions()} />
-      <Stack.Screen name="home" component={HomeScreen} options={{ header: () => <HeaderScreen title="Home" /> }} />
-      <Stack.Screen name="chatList" component={ChatListScreen} options={getStackScreenOptions()}/>
-      <Stack.Screen name="chatConversation" component={ChatConversationScreen} options={getStackScreenOptions()}/>
-      
-     
+
       {/* <Stack.Screen name="Header" component={() => <HeaderScreen title='Header' />} options={{ headerShown: false }} />
       <Stack.Screen name="Footer" component={FooterScreen} />
       <Stack.Screen name="Sidebar" component={SidebarScreen} /> */}

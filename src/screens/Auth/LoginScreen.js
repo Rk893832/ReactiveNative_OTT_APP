@@ -70,6 +70,15 @@ export default function LoginScreen() {
           color="#007AFF"
         />
       </View>
+
+      <View style={styles.header}>
+        <Text style={styles.title}>Go to Home</Text>
+        <Button
+          title="Home"
+          onPress={() => navigation.navigate('Home')}
+          color="#007AFF"
+        />
+      </View>
     </View>
   );
 }
