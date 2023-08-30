@@ -16,7 +16,7 @@ const ChatListScreen = ({ navigation }) => {
       titleStyle={styles.contactTitle}
       descriptionStyle={styles.lastMessage}
       left={() => <Avatar.Text label={item.contact[0]} size={40} style={styles.avatar} />}
-      onPress={() => navigation.navigate('ChatScreen', { contact: item.contact })}
+      onPress={() => navigation.navigate('ChatConversation', { contact: item.contact })}
     />
   );
 

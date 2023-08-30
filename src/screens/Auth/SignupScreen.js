@@ -4,11 +4,11 @@ import {
   StyleSheet, Text, View, TextInput,
   TouchableOpacity, ActivityIndicator
 } from 'react-native';
-// import { TextInput } from 'react-native-web';
-
+import { useNavigation } from '@react-navigation/native';
 
 export default function SignupScreen() {
 
+  const navigation = useNavigation();
   const [isLoading, setIsLoading] = useState(false); // State for loader
   let [userData, setUserData] = useState({
     name: "",
@@ -29,7 +29,6 @@ export default function SignupScreen() {
     setIsLoading(true)
   }
 
-  console.log(StatusBar)
 
   return (
     <View style={styles.container}>
@@ -77,6 +76,15 @@ export default function SignupScreen() {
         </TouchableOpacity>
       )}
 
+
+      <TouchableOpacity style={styles.linkContainer}
+        onPress={() => navigation.navigate('Login')}
+        underlayColor="#EFEFEF">
+        <Text style={styles.title}>Already have an account? 
+          <Text style={styles.linkText}>Log in</Text>
+        </Text>
+      </TouchableOpacity>
+
     </View>
   );
 }
@@ -119,5 +127,23 @@ const styles = StyleSheet.create({
 
   loader: {
     fontSize: 25,
-  }
+  },
+
+  title: {
+    fontSize: 18,
+    marginBottom: 20,
+  },
+  
+  linkContainer: {
+    flexDirection: 'row', // Align children horizontally
+    padding: 10,
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 0,
+    borderColor: 'blue',
+  },
+  linkText: {
+    color: 'blue',
+    fontSize: 18,
+  },
 });

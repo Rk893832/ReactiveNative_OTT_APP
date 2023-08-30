@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Button } from 'react-native';
 
 const HeaderScreen = ({ route, navigation }) => {  
+  
   return (
     <View style={styles.headerContainer}>
       <Text style={styles.title}>{route.name}</Text>

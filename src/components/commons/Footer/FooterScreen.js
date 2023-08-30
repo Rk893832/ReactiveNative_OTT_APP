@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { AntDesign, Feather, FontAwesome } from '@expo/vector-icons';
 
-const CommonFooter = ({ navigation, state }) => {
+const FooterScreen = ({ navigation, state }) => {
   // Define tab icons and labels
   const tabIcons = {
     Home: { icon: 'home', label: 'Home' },
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CommonFooter;
+export default FooterScreen;

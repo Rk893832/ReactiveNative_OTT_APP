@@ -62,14 +62,17 @@ export default function LoginScreen() {
         </TouchableOpacity>
       )}
 
-      <View style={styles.header}>
-        <Text style={styles.title}>Create a New Account</Text>
-        <Button
-          title="Signup"
-          onPress={() => navigation.navigate('Signup')}
-          color="#007AFF"
-        />
-      </View>
+
+      <TouchableOpacity style={styles.linkContainer}
+        onPress={() => navigation.navigate('Signup')}
+        underlayColor="#EFEFEF">
+        <Text style={styles.title}>Create a New Account
+          <Text style={styles.linkText}> Sign Up</Text>
+        </Text>
+      </TouchableOpacity>
+
+
+
 
       <View style={styles.header}>
         <Text style={styles.title}>Go to Home</Text>
@@ -125,9 +128,17 @@ const styles = StyleSheet.create({
   loader: {
     fontSize: 25,
   },
-  header: {
-    flexDirection: 'row', // Display items in a row
-    alignItems: 'center', // Align items vertically in the center
-    marginTop:20    
+
+  linkContainer: {
+    flexDirection: 'row', // Align children horizontally
+    padding: 10,
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 0,
+    borderColor: 'blue',
+  },
+  linkText: {
+    color: 'blue',
+    fontSize: 18,
   },
 });
