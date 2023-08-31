@@ -16,6 +16,9 @@ import ChatConversationScreen from '../screens/Chat/ChatConversationScreen';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import FooterScreen from '../components/commons/Footer/FooterScreen';
 import SettingsScreen from '../screens/Setting/SettingScreen';
+import ChangePasswordScreen from '../screens/Setting/ChangePasswordScreen';
+import OtpVerifyScreen from '../screens/Auth/OtpVerifyScreen';
+
 
 import SidebarScreen from '../components/commons/Sidebar/SidebarScreen';
 import HeaderScreen from '../components/commons/Header/HeaderScreen';
@@ -70,6 +73,8 @@ function DrawerNavigator() {
       <Drawer.Screen name="Home1" component={TabNavigator}  />
       <Drawer.Screen name="Profile" component={EmptyScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
+    
+
     </Drawer.Navigator>
   );
 }
@@ -80,7 +85,8 @@ const StackNavigator = () => {
       <Stack.Screen name="Login" component={LoginScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="Signup" component={SignupScreen} options={getStackScreenOptions()} />
       <Stack.Screen name="Home" component={DrawerNavigator} options={{ headerShown: false }} />
-
+      <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="OtpVerify" component={OtpVerifyScreen} options={{ headerShown: false }}  />
     </Stack.Navigator>
   );
 };

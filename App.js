@@ -8,6 +8,8 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar barStyle="dark-content" />
+
+        
         <AppNavigator />
       </SafeAreaView>
     </SafeAreaProvider>

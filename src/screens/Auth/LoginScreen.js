@@ -1,11 +1,7 @@
 import { useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { useNavigation } from '@react-navigation/native';
-import {
-  StyleSheet, Text, View, TextInput,
-  TouchableOpacity, ActivityIndicator, Button
-} from 'react-native';
-
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
 
 export default function LoginScreen() {
 
@@ -25,6 +21,7 @@ export default function LoginScreen() {
 
   const handleSubmit = () => {
     setIsLoading(true)
+    navigation.navigate('OtpVerify')
   }
 
 
